@@ -3,14 +3,15 @@ st.title('나만의 MBTI 앱!')
 st.write('여기에 무엇을 넣어볼까요?!')
 import streamlit as st
 
+import streamlit as st
+
 st.set_page_config(
-    page_title="MBTI 독서 추천",
-    page_icon="📚",
-    layout="centered"
+    page_title="MBTI 독서 & 포켓몬 추천",
+    page_icon="📚"
 )
 
-st.title("📚 MBTI 기반 청소년 문학 추천")
-st.write("당신의 성격 유형에 어울리는 책을 통해 **새로운 생각과 영감**을 얻어보세요 ✨")
+st.title("📚 MBTI 기반 독서 & 포켓몬 추천 앱")
+st.write("성격 유형에 맞는 **책, 포켓몬, 그리고 오늘의 명언**을 통해 새로운 영감을 얻어보세요 ✨")
 
 st.divider()
 
@@ -26,84 +27,191 @@ mbti = st.selectbox(
 
 data = {
 
-"INTJ": {
+"INTJ":{
+"pokemon":"뮤츠",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
+"pokemon_reason":"깊은 사고와 전략적 지능을 가진 포켓몬으로 INTJ와 닮았습니다.",
+"books":["어린 왕자","1984","멋진 신세계"],
 "desc":"전략적이고 미래지향적인 사고를 하는 사색가형입니다.",
-"books":[
-("어린 왕자","삶의 본질과 인간 관계를 깊게 생각하게 합니다."),
-("멋진 신세계","사회 구조와 인간의 자유에 대해 고민하게 합니다."),
-("1984","비판적 사고와 사회 인식을 키워줍니다.")
-],
-"lesson":"세상을 분석하고 더 나은 미래를 설계하는 힘을 기를 수 있습니다.",
-"question":"우리가 사는 사회에서 진정한 자유란 무엇일까요?",
-"quote":"중요한 것은 눈에 보이지 않는다."
+"lesson":"세상을 분석하고 더 나은 미래를 설계하는 통찰력을 기를 수 있습니다.",
+"quote":"오늘의 작은 계획이 미래의 큰 성공을 만든다."
+},
+
+"INTP":{
+"pokemon":"알카자람",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png",
+"pokemon_reason":"높은 지능과 초능력을 가진 포켓몬으로 탐구형 INTP와 잘 어울립니다.",
+"books":["이상한 나라의 앨리스","프랑켄슈타인","걸리버 여행기"],
+"desc":"논리적이고 호기심이 많은 탐구형 사상가입니다.",
+"lesson":"비판적 사고와 창의적인 질문 능력을 키울 수 있습니다.",
+"quote":"질문하는 순간 새로운 세계가 열린다."
+},
+
+"ENTJ":{
+"pokemon":"리자몽",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+"pokemon_reason":"강한 리더십과 카리스마를 가진 포켓몬입니다.",
+"books":["해리 포터","삼총사","몬테크리스토 백작"],
+"desc":"목표지향적이고 리더십이 강한 지도자형입니다.",
+"lesson":"목표를 이루기 위한 전략과 책임감을 배울 수 있습니다.",
+"quote":"도전은 리더를 성장시킨다."
+},
+
+"ENTP":{
+"pokemon":"로토무",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/479.png",
+"pokemon_reason":"창의적이고 장난기 있는 성격이 ENTP와 닮았습니다.",
+"books":["80일간의 세계일주","이상한 나라의 앨리스","걸리버 여행기"],
+"desc":"창의적이고 아이디어가 풍부한 발명가형입니다.",
+"lesson":"새로운 생각으로 문제를 해결하는 능력을 키울 수 있습니다.",
+"quote":"새로운 아이디어는 세상을 바꿀 수 있다."
+},
+
+"INFJ":{
+"pokemon":"가디안",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png",
+"pokemon_reason":"다른 사람을 보호하는 따뜻한 포켓몬입니다.",
+"books":["모모","어린 왕자","데미안"],
+"desc":"통찰력이 깊고 이상을 추구하는 조언가형입니다.",
+"lesson":"자기 이해와 인간 관계의 깊이를 배울 수 있습니다.",
+"quote":"당신의 진심은 누군가에게 큰 힘이 된다."
 },
 
 "INFP":{
-"desc":"이상과 가치를 중요하게 생각하는 감성적인 이상주의자입니다.",
-"books":[
-("나니아 연대기","상상력과 도덕적 선택을 생각하게 합니다."),
-("모모","시간과 삶의 의미를 고민하게 합니다."),
-("빨강머리 앤","자기다움과 꿈을 지키는 이야기입니다.")
-],
+"pokemon":"이브이",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
+"pokemon_reason":"다양한 가능성을 가진 포켓몬입니다.",
+"books":["빨강머리 앤","나니아 연대기","어린 왕자"],
+"desc":"감수성이 풍부한 이상주의자입니다.",
 "lesson":"자신의 가치와 꿈을 지키는 용기를 배울 수 있습니다.",
-"question":"나에게 가장 중요한 가치는 무엇일까요?",
-"quote":"상상력은 삶을 더 아름답게 만든다."
+"quote":"자신의 꿈을 믿는 것이 가장 큰 용기다."
+},
+
+"ENFJ":{
+"pokemon":"루카리오",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png",
+"pokemon_reason":"정의감과 리더십을 가진 포켓몬입니다.",
+"books":["작은 아씨들","비밀의 화원","플랜더스의 개"],
+"desc":"사람을 이끄는 따뜻한 지도자형입니다.",
+"lesson":"공감과 협력의 가치를 배울 수 있습니다.",
+"quote":"당신의 격려 한마디가 세상을 바꿀 수 있다."
 },
 
 "ENFP":{
-"desc":"열정적이고 창의적인 아이디어가 많은 탐험가형입니다.",
-"books":[
-("피터 팬","자유로운 상상력의 세계를 보여줍니다."),
-("톰 소여의 모험","모험과 성장의 즐거움을 느낄 수 있습니다."),
-("이상한 나라의 앨리스","창의적 사고를 자극하는 이야기입니다.")
-],
+"pokemon":"피카츄",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+"pokemon_reason":"밝고 긍정적인 에너지를 가진 포켓몬입니다.",
+"books":["피터 팬","톰 소여의 모험","이상한 나라의 앨리스"],
+"desc":"열정적이고 상상력이 풍부한 활동가형입니다.",
 "lesson":"세상을 다양한 시각으로 바라보는 힘을 기를 수 있습니다.",
-"question":"어른이 되어도 잃지 말아야 할 것은 무엇일까요?",
-"quote":"호기심은 새로운 세상의 문을 연다."
+"quote":"오늘의 즐거움이 내일의 에너지가 된다."
 },
 
 "ISTJ":{
+"pokemon":"거북왕",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
+"pokemon_reason":"안정감과 책임감을 가진 포켓몬입니다.",
+"books":["로빈슨 크루소","80일간의 세계일주","플랜더스의 개"],
 "desc":"책임감 있고 현실적인 계획가형입니다.",
-"books":[
-("로빈슨 크루소","문제를 해결하는 지혜를 보여줍니다."),
-("80일간의 세계일주","목표를 향한 끈기를 배울 수 있습니다."),
-("플랜더스의 개","성실함과 인간성을 생각하게 합니다.")
-],
-"lesson":"꾸준함과 책임감이 얼마나 중요한지 배울 수 있습니다.",
-"question":"어려움 속에서도 포기하지 않게 만드는 힘은 무엇일까요?",
-"quote":"성실함은 가장 강력한 능력이다."
+"lesson":"꾸준함과 책임감의 중요성을 배울 수 있습니다.",
+"quote":"꾸준함은 가장 강한 힘이다."
+},
+
+"ISFJ":{
+"pokemon":"해피너스",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/242.png",
+"pokemon_reason":"다른 포켓몬을 돌보는 따뜻한 포켓몬입니다.",
+"books":["플랜더스의 개","작은 아씨들","비밀의 화원"],
+"desc":"따뜻하고 책임감 있는 보호자형입니다.",
+"lesson":"배려와 공감의 가치를 배울 수 있습니다.",
+"quote":"작은 친절이 큰 변화를 만든다."
+},
+
+"ESTJ":{
+"pokemon":"마기라스",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png",
+"pokemon_reason":"강력하고 조직적인 힘을 가진 포켓몬입니다.",
+"books":["삼총사","해리 포터","80일간의 세계일주"],
+"desc":"체계적이고 조직적인 지도자형입니다.",
+"lesson":"협력과 리더십의 중요성을 배울 수 있습니다.",
+"quote":"책임감은 신뢰를 만든다."
+},
+
+"ESFJ":{
+"pokemon":"픽시",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png",
+"pokemon_reason":"따뜻하고 사람을 돕는 포켓몬입니다.",
+"books":["작은 아씨들","비밀의 화원","플랜더스의 개"],
+"desc":"친절하고 사교적인 협력가형입니다.",
+"lesson":"공감과 관계의 중요성을 배울 수 있습니다.",
+"quote":"사람을 향한 마음이 세상을 밝힌다."
+},
+
+"ISTP":{
+"pokemon":"스라크",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png",
+"pokemon_reason":"행동력과 문제 해결 능력이 뛰어난 포켓몬입니다.",
+"books":["로빈슨 크루소","보물섬","80일간의 세계일주"],
+"desc":"논리적이고 실용적인 문제 해결가입니다.",
+"lesson":"도전과 경험을 통해 배우는 능력을 기를 수 있습니다.",
+"quote":"직접 해보는 것이 최고의 배움이다."
+},
+
+"ISFP":{
+"pokemon":"라프라스",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png",
+"pokemon_reason":"온화하고 감성적인 포켓몬입니다.",
+"books":["어린 왕자","비밀의 화원","빨강머리 앤"],
+"desc":"감성적이고 예술적인 자유로운 영혼입니다.",
+"lesson":"자신만의 감성과 아름다움을 발견할 수 있습니다.",
+"quote":"자신의 마음을 믿어도 괜찮다."
+},
+
+"ESTP":{
+"pokemon":"초염몽",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/392.png",
+"pokemon_reason":"불꽃처럼 에너지 넘치는 포켓몬입니다.",
+"books":["보물섬","톰 소여의 모험","80일간의 세계일주"],
+"desc":"활동적이고 도전을 좋아하는 모험가입니다.",
+"lesson":"새로운 도전을 통해 성장하는 법을 배울 수 있습니다.",
+"quote":"도전하는 순간 성장이 시작된다."
+},
+
+"ESFP":{
+"pokemon":"푸린",
+"img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png",
+"pokemon_reason":"사람들을 즐겁게 하는 포켓몬입니다.",
+"books":["피터 팬","톰 소여의 모험","빨강머리 앤"],
+"desc":"즐거움과 에너지를 나누는 자유로운 연예인형입니다.",
+"lesson":"긍정적인 태도의 중요성을 배울 수 있습니다.",
+"quote":"웃음은 가장 강한 에너지다."
 }
 
 }
 
 st.divider()
 
-if st.button("📚 책 추천 받기"):
-    
-    if mbti in data:
-        info = data[mbti]
+if st.button("📚 추천 보기"):
 
-        st.balloons()
+    info = data[mbti]
 
-        st.subheader(f"✨ {mbti} 유형")
+    st.balloons()
 
-        st.info(info["desc"])
+    st.subheader(f"✨ {mbti} 유형")
 
-        st.subheader("📖 추천 도서")
+    st.info(info["desc"])
 
-        for book in info["books"]:
-            st.write(f"**{book[0]}**")
-            st.write(f"👉 {book[1]}")
-            st.write("")
+    st.subheader("⚡ 추천 포켓몬")
+    st.image(info["img"], width=200)
+    st.write(info["pokemon"])
+    st.write("👉", info["pokemon_reason"])
 
-        st.subheader("💡 이 책이 주는 영감")
-        st.success(info["lesson"])
+    st.subheader("📚 추천 도서")
+    for book in info["books"]:
+        st.write("📖", book)
 
-        st.subheader("❓ 생각해볼 질문")
-        st.warning(info["question"])
+    st.subheader("💡 독서를 통해 얻는 영감")
+    st.success(info["lesson"])
 
-        st.subheader("🌟 오늘의 명언")
-        st.write(f"\"{info['quote']}\"")
-
-    else:
-        st.write("이 MBTI 유형의 데이터는 아직 준비 중입니다 🙂")
+    st.subheader("🌟 오늘의 명언")
+    st.write(f"\"{info['quote']}\"")
