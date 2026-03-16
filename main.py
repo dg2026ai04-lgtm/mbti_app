@@ -3,8 +3,6 @@ st.title('나만의 MBTI 앱!')
 st.write('여기에 무엇을 넣어볼까요?!')
 import streamlit as st
 
-import streamlit as st
-
 st.set_page_config(
     page_title="MBTI 독서 추천",
     page_icon="📚",
